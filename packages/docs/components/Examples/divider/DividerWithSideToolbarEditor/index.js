@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
 
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 import createFocusPlugin from '@draft-js-plugins/focus';
 import createSideToolbarPlugin from '@draft-js-plugins/side-toolbar';
 import createDividerPlugin from '@draft-js-plugins/divider';

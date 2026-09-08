@@ -2,6 +2,9 @@
   "name": "draft-js-plugins",
   "description": "A Plugin Architecture on top of Draft.JS",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=24"
+  },
   "author": {
     "name": "Nik Graf",
     "email": "nik@nikgraf.com",
@@ -12,6 +15,12 @@
     "eslint-plugin-import": "^2.32.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "resolutions": {
+    "immutable": "^5.1.5"
+  },
+  "overrides": {
+    "immutable": "^5.1.5"
   },
   "devDependencies": {
     "@babel/core": "7.28.5",
@@ -91,7 +100,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/draft-js-plugins/draft-js-plugins.git"
+    "url": "https://github.com/Vectorworks/draft-js-plugins.git"
   },
   "scripts": {
     "alex": "alex README.md",
@@ -104,7 +113,7 @@
     "test:jest": "jest",
     "test:watch": "yarn test -- --watch",
     "build": "yarn build:dts && yarn workspaces run build",
-    "build:dts": "yarn workspace @draft-js-plugins/editor run build && yarn workspace @draft-js-plugins/utils run build && yarn workspace @draft-js-plugins/buttons run build",
+    "build:dts": "yarn workspace @vectorworks/draft-js-plugins run build && yarn workspace @draft-js-plugins/utils run build && yarn workspace @draft-js-plugins/buttons run build",
     "prerelease": "yarn build",
     "release": "changeset publish",
     "postinstall": "husky install"

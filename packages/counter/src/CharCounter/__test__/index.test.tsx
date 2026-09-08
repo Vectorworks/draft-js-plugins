@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
-import { PluginFunctions } from '@draft-js-plugins/editor';
+import { PluginFunctions } from '@vectorworks/draft-js-plugins';
 import { EditorState, ContentState } from 'draft-js';
 import createCounterPlugin from '../../index';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
+import Editor, { createEditorStateWithText } from '@vectorworks/draft-js-plugins';
 import createHashtagPlugin from '@draft-js-plugins/hashtag';
 import editorStyles from './editorStyles.module.css';
 import hashtagStyles from './hashtagStyles.module.css';

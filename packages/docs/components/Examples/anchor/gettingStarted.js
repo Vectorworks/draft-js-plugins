@@ -1,5 +1,5 @@
 // It is important to import the Editor which accepts plugins.
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createLinkPlugin from '@draft-js-plugins/anchor';
 import createInlineToolbarPlugin from '@draft-js-plugins/inline-toolbar';
 import {

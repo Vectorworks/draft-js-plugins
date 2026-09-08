@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
+import Editor, { createEditorStateWithText } from '@vectorworks/draft-js-plugins';
 
 import createImagePlugin from '@draft-js-plugins/image';
 import ImageAdd from './ImageAdd';

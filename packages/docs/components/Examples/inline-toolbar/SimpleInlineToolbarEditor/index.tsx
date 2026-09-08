@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import { EditorState } from 'draft-js';
-import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
+import Editor, { createEditorStateWithText } from '@vectorworks/draft-js-plugins';
 import createInlineToolbarPlugin from '@draft-js-plugins/inline-toolbar';
 import editorStyles from './editorStyles.module.css';
 

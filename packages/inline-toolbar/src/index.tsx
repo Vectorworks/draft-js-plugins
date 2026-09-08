@@ -1,5 +1,5 @@
 import React, { ComponentType, FC, ReactElement } from 'react';
-import { EditorPlugin } from '@draft-js-plugins/editor';
+import { EditorPlugin } from '@vectorworks/draft-js-plugins';
 import { EditorState, SelectionState } from 'draft-js';
 import { createStore, Store } from '@draft-js-plugins/utils';
 import Toolbar, { ToolbarChildrenProps } from './components/Toolbar';

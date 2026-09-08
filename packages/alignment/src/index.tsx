@@ -1,6 +1,6 @@
 import React, { ComponentType, ReactElement } from 'react';
 import { ContentBlock, EditorState } from 'draft-js';
-import { EditorPlugin } from '@draft-js-plugins/editor';
+import { EditorPlugin } from '@vectorworks/draft-js-plugins';
 import { createStore, Store } from '@draft-js-plugins/utils';
 import createDecorator from './createDecorator';
 import AlignmentTool from './AlignmentTool';

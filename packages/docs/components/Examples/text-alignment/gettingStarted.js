@@ -1,5 +1,5 @@
 // It is important to import the Editor which accepts plugins.
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createTextAlignmentPlugin from '@draft-js-plugins/text-alignment';
 import createStaticToolbarPlugin from '@draft-js-plugins/static-toolbar';
 import {

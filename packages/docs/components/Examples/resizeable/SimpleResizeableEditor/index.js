@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
 
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 
 import createResizeablePlugin from '@draft-js-plugins/resizeable';
 

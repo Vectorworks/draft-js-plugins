@@ -4,9 +4,9 @@ import {
   DefaultDraftBlockRenderMap,
   EditorState,
 } from 'draft-js';
-import Immutable from 'immutable';
+import { Map } from 'immutable';
 
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 
 import createAlignmentPlugin from '@draft-js-plugins/alignment';
 
@@ -79,7 +79,7 @@ function BlockWrapper({ children }) {
   return <div className={editorStyles.wrapper}>{children}</div>;
 }
 
-const blockRenderMap = Immutable.Map({
+const blockRenderMap = Map({
   atomic: {
     element: 'figure',
     wrapper: <BlockWrapper />,

@@ -1,4 +1,5 @@
 import { EditorState, Modifier, SelectionState } from 'draft-js';
+import { is } from 'immutable';
 import { findWithRegex } from '@draft-js-plugins/utils';
 import emojiToolkit from 'emoji-toolkit';
 
@@ -34,8 +35,10 @@ export default function attachImmutableEntitiesToEmojis(
         const selection: SelectionState = SelectionState.createEmpty(
           block.getKey()
         )
-          .set('anchorOffset', start)
-          .set('focusOffset', end) as SelectionState;
+          .merge({
+            anchorOffset: start,
+            focusOffset: end,
+          });
 
         const emojiText = plainText.substring(start, end);
         const contentStateWithEntity = newContentState.createEntity(
@@ -57,7 +60,7 @@ export default function attachImmutableEntitiesToEmojis(
     }
   });
 
-  if (!newContentState.equals(contentState)) {
+  if (!is(newContentState, contentState)) {
     return EditorState.push(editorState, newContentState, 'change-block-data');
   }
 

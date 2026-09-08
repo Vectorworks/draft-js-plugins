@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 import { EditorState, ContentState } from 'draft-js';
-import { PluginFunctions } from '@draft-js-plugins/editor';
+import { PluginFunctions } from '@vectorworks/draft-js-plugins';
 import createCounterPlugin from '../../index';
 
 jest.mock('linaria');
