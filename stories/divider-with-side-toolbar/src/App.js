@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
 
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 import createFocusPlugin from '@draft-js-plugins/focus';
 import createSideToolbarPlugin from '@draft-js-plugins/side-toolbar';
 import createDividerPlugin from '@draft-js-plugins/divider';
@@ -32,8 +32,7 @@ const initialState = {
   blocks: [
     {
       key: '9gm3s',
-      text:
-        'This is a simple example for divider plugin. Click side toolbar divider button.',
+      text: 'This is a simple example for divider plugin. Click side toolbar divider button.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],

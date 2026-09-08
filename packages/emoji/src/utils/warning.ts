@@ -2,7 +2,7 @@ import { once } from 'lodash';
 
 export const warning = once((text: string): void => {
   if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
+    // biome-ignore lint/suspicious/noConsole: Development-only warning.
     console.warn(text);
   }
 });

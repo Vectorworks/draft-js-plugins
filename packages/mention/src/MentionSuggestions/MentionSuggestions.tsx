@@ -1,4 +1,4 @@
-import { AriaProps, EditorCommand } from '@draft-js-plugins/editor';
+import { AriaProps, EditorCommand } from '@vectorworks/draft-js-plugins';
 import {
   DraftHandleValue,
   EditorState,
@@ -85,7 +85,6 @@ export class MentionSuggestions extends Component<MentionSuggestionsProps> {
   activeOffsetKey?: string;
   lastSearchValue?: string;
   lastActiveTrigger?: string = '';
-  lastSelectionIsInsideWord?: Immutable.Iterable<string, boolean>;
 
   constructor(props: MentionSuggestionsProps) {
     super(props);
@@ -115,6 +114,9 @@ export class MentionSuggestions extends Component<MentionSuggestionsProps> {
       const decoratorRect = this.props.store.getPortalClientRect(
         this.activeOffsetKey!
       );
+      if (!decoratorRect) {
+        return;
+      }
       const positionSuggestions =
         this.props.positionSuggestions || defaultPositionSuggestions;
       const newStyles: CSSProperties = positionSuggestions({

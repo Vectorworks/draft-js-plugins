@@ -1,7 +1,7 @@
 import React, { ReactElement, useRef, useState } from 'react';
 import { convertFromRaw, EditorState, RawDraftContentState } from 'draft-js';
 
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 import createImagePlugin from '@draft-js-plugins/image';
 import createAlignmentPlugin from '@draft-js-plugins/alignment';
 import createFocusPlugin from '@draft-js-plugins/focus';
@@ -45,8 +45,7 @@ const initialState: RawDraftContentState = {
   blocks: [
     {
       key: '9gm3s',
-      text:
-        'You can have images in your text field. This is a very rudimentary example, but you can enhance the image plugin with resizing, focus or alignment plugins.',
+      text: 'You can have images in your text field. This is a very rudimentary example, but you can enhance the image plugin with resizing, focus or alignment plugins.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],

@@ -3,7 +3,7 @@ import { Modifier } from 'react-popper';
 import { Map } from 'immutable';
 import React, { ComponentType, ReactElement } from 'react';
 import { EditorState } from 'draft-js';
-import { EditorPlugin, AriaProps } from '@draft-js-plugins/editor';
+import { EditorPlugin, AriaProps } from '@vectorworks/draft-js-plugins';
 import Mention, { MentionProps, SubMentionComponentProps } from './Mention';
 import MentionSuggestions, {
   MentionSuggestionCallbacks,
@@ -48,7 +48,7 @@ export interface MultiMentionData {
 export interface MentionPluginStore {
   setEditorState?(editorState: EditorState): void;
   getEditorState?(): EditorState;
-  getPortalClientRect(offsetKey: string): ClientRect;
+  getPortalClientRect(offsetKey: string): ClientRect | undefined;
   getAllSearches(): Map<string, string>;
   isEscaped(offsetKey: string): boolean;
   escapeSearch(offsetKey: string): void;
@@ -108,7 +108,10 @@ export default (
   const store: MentionPluginStore = {
     getEditorState: undefined,
     setEditorState: undefined,
-    getPortalClientRect: (offsetKey) => clientRectFunctions.get(offsetKey)(),
+    getPortalClientRect: (offsetKey) => {
+      const getClientRect = clientRectFunctions.get(offsetKey);
+      return getClientRect ? getClientRect() : undefined;
+    },
     getAllSearches: () => searches,
     isEscaped: (offsetKey) => escapedSearch === offsetKey,
     escapeSearch: (offsetKey) => {

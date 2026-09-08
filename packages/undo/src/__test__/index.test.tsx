@@ -1,7 +1,7 @@
 import React from 'react';
 import { EditorState } from 'draft-js';
 import { render, screen } from '@testing-library/react';
-import { PluginFunctions } from '@draft-js-plugins/editor';
+import { PluginFunctions } from '@vectorworks/draft-js-plugins';
 import createUndoPlugin from '../index';
 
 jest.mock('linaria');

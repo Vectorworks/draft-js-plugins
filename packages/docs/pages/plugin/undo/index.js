@@ -43,7 +43,7 @@ export default class App extends Component {
         </Container>
         <AlternateContainer>
           <Heading level={2}>Getting Started</Heading>
-          <Code code="npm install @draft-js-plugins/editor" />
+          <Code code="npm install @vectorworks/draft-js-plugins" />
           <Code code="npm install @draft-js-plugins/undo" />
           <Code code={gettingStarted} name="gettingStarted.js" />
           <Heading level={3}>Importing the default styles</Heading>

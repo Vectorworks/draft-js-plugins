@@ -1,7 +1,9 @@
 /* eslint-disable react/no-multi-comp */
 import React, { useRef, useState, useEffect, ReactElement } from 'react';
 
-import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
+import Editor, {
+  createEditorStateWithText,
+} from '@vectorworks/draft-js-plugins';
 
 import createToolbarPlugin, {
   Separator,
@@ -46,13 +48,15 @@ const HeadlinesPicker = (props): ReactElement => {
   const buttons = [HeadlineOneButton, HeadlineTwoButton, HeadlineThreeButton];
   return (
     <div>
-      {buttons.map((
-        Button,
-        i // eslint-disable-next-line
-      ) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Button key={i} {...props} />
-      ))}
+      {buttons.map(
+        (
+          Button,
+          i // eslint-disable-next-line
+        ) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <Button key={i} {...props} />
+        )
+      )}
     </div>
   );
 };

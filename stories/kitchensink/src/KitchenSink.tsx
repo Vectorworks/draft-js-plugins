@@ -1,4 +1,4 @@
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createEmojiPlugin from '@draft-js-plugins/emoji';
 import createHashtagPlugin from '@draft-js-plugins/hashtag';
 import createLinkifyPlugin from '@draft-js-plugins/linkify';

@@ -47,7 +47,7 @@ export default class App extends Component {
         </Container>
         <AlternateContainer>
           <Heading level={2}>Getting Started</Heading>
-          <Code code="npm install @draft-js-plugins/editor" />
+          <Code code="npm install @vectorworks/draft-js-plugins" />
           <Code code="npm install @draft-js-plugins/focus" />
           <Code code="npm install @draft-js-plugins/resizeable" />
           <Heading level={3}>Notes</Heading>

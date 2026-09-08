@@ -7,7 +7,21 @@ interface TriggerForMentionResult {
   activeTrigger: string;
 }
 
-function filterUndefineds(value: unknown | undefined): boolean {
+interface Leaf {
+  start: number;
+  end: number;
+}
+
+const isLeaf = (value: unknown): value is Leaf => {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+
+  const { start, end } = value as Record<string, unknown>;
+  return typeof start === 'number' && typeof end === 'number';
+};
+
+function filterUndefineds<T>(value: T | undefined): value is T {
   return value !== undefined;
 }
 
@@ -32,16 +46,22 @@ export default function getTriggerForMention(
 
   // a leave can be empty when it is removed due event.g. using backspace
   // do not check leaves, use full decorated portal text
-  const leaves = offsetDetails
-    .filter((offsetDetail) => offsetDetail!.blockKey === anchorKey)
-    .map((offsetDetail) =>
-      editorState
-        .getBlockTree(offsetDetail!.blockKey)
-        .getIn([offsetDetail!.decoratorKey])
-    );
+  const leaves = offsetDetails.reduce<Map<string, Leaf>>(
+    (result, offsetDetail, offsetKey) => {
+      if (!offsetDetail || offsetDetail.blockKey !== anchorKey) {
+        return result;
+      }
+
+      const leaf = editorState
+        .getBlockTree(offsetDetail.blockKey)
+        .getIn([offsetDetail.decoratorKey]);
+      return isLeaf(leaf) ? result.set(offsetKey, leaf) : result;
+    },
+    Map()
+  );
 
   // if all leaves are undefined the popover should be removed
-  if (leaves.every((leave) => leave === undefined)) {
+  if (leaves.isEmpty()) {
     return null;
   }
   // Checks that the cursor is after the @ character but still somewhere in
@@ -52,7 +72,6 @@ export default function getTriggerForMention(
     .getBlockForKey(anchorKey)
     .getText();
   const triggerForSelectionInsideWord = leaves
-    .filter(filterUndefineds)
     .map(
       ({ start, end }) =>
         mentionTriggers
@@ -83,10 +102,12 @@ export default function getTriggerForMention(
     return null;
   }
 
-  const [
-    activeOffsetKey,
-    activeTrigger,
-  ] = triggerForSelectionInsideWord.entrySeq().first();
+  const activeSearch = triggerForSelectionInsideWord.entrySeq().first();
+  if (!activeSearch) {
+    return null;
+  }
+
+  const [activeOffsetKey, activeTrigger] = activeSearch;
 
   return {
     activeOffsetKey,

@@ -1,7 +1,7 @@
 import React, { ComponentType, ReactElement, FC } from 'react';
 import { EditorState } from 'draft-js';
 import { createStore, Store } from '@draft-js-plugins/utils';
-import { EditorPlugin } from '@draft-js-plugins/editor';
+import { EditorPlugin } from '@vectorworks/draft-js-plugins';
 import * as PopperJS from '@popperjs/core';
 import { Modifier } from 'react-popper';
 import Toolbar, {

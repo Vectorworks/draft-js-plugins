@@ -1,6 +1,6 @@
 import React, { ReactElement, useRef, useState } from 'react';
 import { EditorState } from 'draft-js';
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createMentionPlugin, {
   Popover,
   defaultSuggestionsFilter,
@@ -52,11 +52,9 @@ const CustomMentionEditor = (): ReactElement => {
         onOpenChange={onOpenChange}
         onSearchChange={onSearchChange}
         suggestions={suggestions}
-        popoverContainer={({children, ...props}) => (
+        popoverContainer={({ children, ...props }) => (
           <Popover {...props}>
-            <div style={{ background: '#000', color: '#fff' }}>
-              {children}
-            </div>
+            <div style={{ background: '#000', color: '#fff' }}>{children}</div>
           </Popover>
         )}
       />

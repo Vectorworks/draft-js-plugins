@@ -11,7 +11,7 @@ const cleanupSticker = (
   const content = editorState.getCurrentContent();
 
   // get range of the broken sticker block
-  const targetRange = new SelectionState({
+  const targetRange = new SelectionState().merge({
     anchorKey: blockKey,
     anchorOffset: 0,
     focusKey: blockKey,
@@ -43,10 +43,10 @@ export default (editorState: EditorState): EditorState => {
   // In this case the block will still be of type sticker.
   editorState
     .getCurrentContent()
-    .get('blockMap')
+    .getBlockMap()
     .forEach((block: ContentBlock) => {
-      if (block.get('type') === 'sticker' && block.getEntityAt(0) === null) {
-        newEditorState = cleanupSticker(editorState, block.get('key'));
+      if (block.getType() === 'sticker' && block.getEntityAt(0) === null) {
+        newEditorState = cleanupSticker(editorState, block.getKey());
       }
     });
   return newEditorState;

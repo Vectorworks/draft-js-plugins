@@ -12,7 +12,7 @@ export default function replaceBlock(
 ): EditorState {
   let content = editorState.getCurrentContent();
 
-  const targetRange = new SelectionState({
+  const targetRange = new SelectionState().merge({
     anchorKey: blockKey,
     anchorOffset: 0,
     focusKey: blockKey,

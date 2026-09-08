@@ -25,7 +25,7 @@ export default (editorState: EditorState, stickerId: string): EditorState => {
 
   // deciding on the postion to split the text
   const targetSelection = afterRemovalContentState.getSelectionAfter();
-  const blockKeyForTarget = targetSelection.get('focusKey');
+  const blockKeyForTarget = targetSelection.getFocusKey();
   const block = currentContentState.getBlockForKey(blockKeyForTarget);
   let insertionTargetSelection;
   let insertionTargetBlock;
@@ -66,6 +66,7 @@ export default (editorState: EditorState, stickerId: string): EditorState => {
   const charDataOfSticker = CharacterMetadata.create({ entity: entityKey });
 
   const fragmentArray = [
+    // @ts-expect-error @types/draft-js does not model ContentBlock's Record initializer with Immutable v5.
     new ContentBlock({
       key: genKey(),
       type: 'sticker',
@@ -74,6 +75,7 @@ export default (editorState: EditorState, stickerId: string): EditorState => {
     }),
 
     // new contentblock so we can continue wrting right away after inserting the sticker
+    // @ts-expect-error @types/draft-js does not model ContentBlock's Record initializer with Immutable v5.
     new ContentBlock({
       key: genKey(),
       type: 'unstyled',

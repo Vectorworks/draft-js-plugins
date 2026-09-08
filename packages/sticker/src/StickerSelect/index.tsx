@@ -3,7 +3,7 @@ import { EditorState } from 'draft-js';
 import StickerOption from './StickerOption';
 import addSticker from '../modifiers/addSticker';
 import { StickerPluginTheme } from '../theme';
-import { ImmutableDataStickerPluginItem, ImmutableStickerPluginItem } from '..';
+import { ImmutableDataStickerPluginItem } from '..';
 
 /**
  * Sets the CSS overflow value to newValue
@@ -86,20 +86,30 @@ export default class StickerSelect extends Component<StickerSelectParams> {
 
   render(): ReactElement {
     // Create the sticker selection elements
-    const data = this.props.stickers.get('data') as ImmutableStickerPluginItem;
-    const stickerElements = data.map((sticker) => {
-      const id = sticker!.get('id');
-      const url = sticker!.get('url');
-      return (
-        <StickerOption
-          theme={this.props.theme}
-          key={id}
-          onClick={this.add}
-          id={id}
-          url={url}
-        />
-      );
-    });
+    const data = this.props.stickers.get('data');
+    const stickerElements = data
+      ? data
+          .map((sticker) => {
+            const id = sticker.get('id');
+            const url = sticker.get('url');
+
+            if (!id || !url) {
+              return null;
+            }
+
+            return (
+              <StickerOption
+                theme={this.props.theme}
+                key={id}
+                onClick={this.add}
+                id={id}
+                url={url}
+              />
+            );
+          })
+          .toList()
+          .toJS()
+      : [];
 
     const { theme = {} } = this.props;
     const popoverClassName = this.state.open
@@ -123,9 +133,7 @@ export default class StickerSelect extends Component<StickerSelectParams> {
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
         >
-          <div className={theme.selectStickerList}>
-            {stickerElements.toList().toJS()}
-          </div>
+          <div className={theme.selectStickerList}>{stickerElements}</div>
           <div className={theme.selectBottomGradient} />
         </div>
       </div>
