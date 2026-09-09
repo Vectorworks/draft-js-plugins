@@ -1,6 +1,6 @@
 import React, { useState, useRef, ReactElement } from 'react';
 import { convertFromRaw, EditorState, RawDraftContentState } from 'draft-js';
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 import createFocusPlugin from '@draft-js-plugins/focus';
 import createColorBlockPlugin from './colorBlockPlugin';
 import editorStyles from './editorStyles.css';
@@ -48,8 +48,7 @@ const initialState: RawDraftContentState = {
     },
     {
       key: 'e23a8',
-      text:
-        'More text here to demonstrate how inline left/right alignment works …',
+      text: 'More text here to demonstrate how inline left/right alignment works …',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],

@@ -1,5 +1,7 @@
 import React, { useState, useRef, ReactElement } from 'react';
-import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
+import Editor, {
+  createEditorStateWithText,
+} from '@vectorworks/draft-js-plugins';
 import createCounterPlugin from '@draft-js-plugins/counter';
 import editorStyles from './editorStyles.css';
 

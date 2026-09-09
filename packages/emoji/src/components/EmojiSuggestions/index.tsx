@@ -12,8 +12,8 @@ import {
   SelectionState,
 } from 'draft-js';
 import utils from '@draft-js-plugins/utils';
-import { AriaProps } from '@draft-js-plugins/editor';
-import { List } from 'immutable';
+import { AriaProps } from '@vectorworks/draft-js-plugins';
+import { is, List, Map } from 'immutable';
 import Entry from './Entry';
 import {
   EmojiImageProps,
@@ -30,6 +30,20 @@ import { EmojiPluginTheme } from '../../theme';
 import { EmojiShape } from '../../constants/type';
 import Popover from './Popover';
 import { warning } from '../../utils/warning';
+
+interface Leaf {
+  start: number;
+  end: number;
+}
+
+const isLeaf = (value: unknown): value is Leaf => {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+
+  const { start, end } = value as Record<string, unknown>;
+  return typeof start === 'number' && typeof end === 'number';
+};
 
 export interface EmojiSuggestionsPubParams {
   isActive?: boolean;
@@ -60,7 +74,7 @@ export default class EmojiSuggestions extends Component<EmojiSuggestionsParams> 
   key!: string;
   filteredEmojis?: List<EmojiShape>;
   activeOffsetKey?: string;
-  lastSelectionIsInsideWord?: Immutable.Iterable<string, boolean>;
+  lastSelectionIsInsideWord?: Map<string, boolean>;
   lastSearchValue?: string;
 
   UNSAFE_componentWillMount(): void {
@@ -143,16 +157,22 @@ export default class EmojiSuggestions extends Component<EmojiSuggestionsParams> 
     );
 
     // a leave can be empty when it is removed due e.g. using backspace
-    const leaves = offsetDetails
-      .filter((offsetDetail) => offsetDetail!.blockKey === anchorKey)
-      .map((offsetDetail) =>
-        editorState
+    const leaves = offsetDetails.reduce<Map<string, Leaf>>(
+      (result, offsetDetail, offsetKey) => {
+        if (offsetDetail!.blockKey !== anchorKey) {
+          return result;
+        }
+
+        const leaf = editorState
           .getBlockTree(offsetDetail!.blockKey)
-          .getIn([offsetDetail!.decoratorKey, 'leaves', offsetDetail!.leafKey])
-      );
+          .getIn([offsetDetail!.decoratorKey, 'leaves', offsetDetail!.leafKey]);
+        return isLeaf(leaf) ? result.set(offsetKey, leaf) : result;
+      },
+      Map()
+    );
 
     // if all leaves are undefined the popover should be removed
-    if (leaves.every((leave) => leave === undefined)) {
+    if (leaves.isEmpty()) {
       return removeList();
     }
 
@@ -161,7 +181,6 @@ export default class EmojiSuggestions extends Component<EmojiSuggestionsParams> 
     // the @ causes troubles due selection confusion.
     const plainText = editorState.getCurrentContent().getPlainText();
     const selectionIsInsideWord = leaves
-      .filter((leave) => leave !== undefined)
       .map(
         ({ start, end }) =>
           (start === 0 &&
@@ -175,16 +194,20 @@ export default class EmojiSuggestions extends Component<EmojiSuggestionsParams> 
     if (selectionIsInsideWord.every((isInside) => isInside === false))
       return removeList();
 
-    this.activeOffsetKey = selectionIsInsideWord
+    const activeOffsetKey = selectionIsInsideWord
       .filter((value) => value === true)
       .keySeq()
       .first();
+    if (activeOffsetKey === undefined) {
+      return removeList();
+    }
+    this.activeOffsetKey = activeOffsetKey;
 
     this.onSearchChange(editorState, selection);
 
     // make sure the escaped search is reseted in the cursor since the user
     // already switched to another emoji search
-    if (!this.props.store.isEscaped(this.activeOffsetKey)) {
+    if (!this.props.store.isEscaped(activeOffsetKey)) {
       this.props.store.resetEscapedSearch();
     }
 
@@ -193,7 +216,7 @@ export default class EmojiSuggestions extends Component<EmojiSuggestionsParams> 
     // input field and then comes back: the dropdown will again.
     if (
       !this.state.isActive &&
-      !this.props.store.isEscaped(this.activeOffsetKey)
+      !this.props.store.isEscaped(activeOffsetKey)
     ) {
       this.openDropdown();
     }
@@ -202,7 +225,7 @@ export default class EmojiSuggestions extends Component<EmojiSuggestionsParams> 
     // or the selection was moved to another emoji search
     if (
       this.lastSelectionIsInsideWord === undefined ||
-      !selectionIsInsideWord.equals(this.lastSelectionIsInsideWord)
+      !is(selectionIsInsideWord, this.lastSelectionIsInsideWord)
     ) {
       this.setState({
         focusedOptionIndex: 0,
@@ -256,6 +279,10 @@ export default class EmojiSuggestions extends Component<EmojiSuggestionsParams> 
     )
       .keySeq()
       .first();
+    if (activeOffsetKey === undefined) {
+      this.closeDropdown();
+      return;
+    }
     this.props.store.escapeSearch(activeOffsetKey);
     this.closeDropdown();
 
@@ -299,7 +326,11 @@ export default class EmojiSuggestions extends Component<EmojiSuggestionsParams> 
   };
 
   commitSelection = (): DraftHandleValue => {
-    this.onEmojiSelect(this.filteredEmojis!.get(this.state.focusedOptionIndex));
+    const emoji = this.filteredEmojis?.get(this.state.focusedOptionIndex);
+    if (!emoji) {
+      return 'not-handled';
+    }
+    this.onEmojiSelect(emoji);
     return 'handled';
   };
 

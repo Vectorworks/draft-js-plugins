@@ -57,7 +57,7 @@ Because of the structure of this repository you can not just use your own fork o
 
 2. Install Yarn `npm install --global yarn` and install node modules `yarn install`
 
-3. Reference the needed sub packages in your code f.ex. the plugin editor `import PluginEditor from '@draft-js-plugins/editor';`
+3. Reference the needed sub packages in your code f.ex. the plugin editor `import PluginEditor from '@vectorworks/draft-js-plugins';`
 
 4. When using Webpack you need to tell it how to compile the draft-js-plugins code, you do that by adding an additional loader like this:
 
@@ -91,7 +91,7 @@ module: {
 ```
 resolve: {
   alias: {
-    '@draft-js-plugins/editor': path.join(__dirname, 'node_modules', 'draft-js-plugins', 'packages', 'plugins-editor', 'src'),
+    '@vectorworks/draft-js-plugins': path.join(__dirname, 'node_modules', 'draft-js-plugins', 'packages', 'plugins-editor', 'src'),
     '@draft-js-plugins/hashtag': path.join(__dirname, 'node_modules', 'draft-js-plugins', 'packages', 'hashtag', 'src'),
     '@draft-js-plugins/linkify': path.join(__dirname, 'node_modules', 'draft-js-plugins', 'packages', 'linkify', 'src'),
     '@draft-js-plugins/mention': path.join(__dirname, 'node_modules', 'draft-js-plugins', 'packages', 'mention', 'src'),

@@ -1,10 +1,11 @@
 import React from 'react';
+import '@testing-library/jest-dom';
 import { screen, render } from '@testing-library/react';
 import { EditorState, ContentState } from 'draft-js';
-import { PluginFunctions } from '@draft-js-plugins/editor';
+import { PluginFunctions } from '@vectorworks/draft-js-plugins';
 import createCounterPlugin from '../../index';
 
-jest.mock('linaria');
+jest.mock('@linaria/core');
 
 describe('CounterPlugin Line Counter', () => {
   const createEditorStateFromText = (text: string): EditorState => {

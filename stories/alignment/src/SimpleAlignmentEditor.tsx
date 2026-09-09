@@ -5,8 +5,8 @@ import {
   EditorState,
   RawDraftContentState,
 } from 'draft-js';
-import Immutable from 'immutable';
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import { Map } from 'immutable';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 import createAlignmentPlugin from '@draft-js-plugins/alignment';
 import createFocusPlugin from '@draft-js-plugins/focus';
 import createColorBlockPlugin from './colorBlockPlugin';
@@ -36,8 +36,7 @@ const initialState: RawDraftContentState = {
   blocks: [
     {
       key: '9gm3s',
-      text:
-        'This is a simple example. Focus the block by clicking on it and change alignment via the toolbar.',
+      text: 'This is a simple example. Focus the block by clicking on it and change alignment via the toolbar.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],
@@ -61,8 +60,7 @@ const initialState: RawDraftContentState = {
     },
     {
       key: 'e23a8',
-      text:
-        'More text here to demonstrate how inline left/right alignment works …',
+      text: 'More text here to demonstrate how inline left/right alignment works …',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],
@@ -77,7 +75,7 @@ function BlockWrapper({ children }: { children?: ReactNode }): ReactElement {
   return <div className={editorStyles.wrapper}>{children}</div>;
 }
 
-const blockRenderMap = Immutable.Map({
+const blockRenderMap = Map({
   atomic: {
     element: 'figure',
     wrapper: <BlockWrapper />,

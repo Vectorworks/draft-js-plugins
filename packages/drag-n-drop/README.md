@@ -1,6 +1,6 @@
 # DraftJS Block Drag & Drop Plugin
 
-_This is a plugin for the `@draft-js-plugins/editor`._
+_This is a plugin for the `@vectorworks/draft-js-plugins`._
 
 This plugin adds drag and drop functionality to your editor!
 

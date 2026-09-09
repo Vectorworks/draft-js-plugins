@@ -43,7 +43,7 @@ function createEditorState(
     ])
   );
 
-  const selection = new SelectionState({
+  const selection = new SelectionState().merge({
     anchorKey: 'eai0g',
     anchorOffset: offset,
     focusKey: 'eai0g',

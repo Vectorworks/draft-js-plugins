@@ -1,7 +1,6 @@
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import { ContentBlock, ContentState, SelectionState } from 'draft-js';
-import { CSSProperties } from 'linaria';
 import { isYoutube, getYoutubeSrc, isVimeo, getVimeoSrc } from '../utils';
 import { VideoPluginTheme } from '../../theme';
 

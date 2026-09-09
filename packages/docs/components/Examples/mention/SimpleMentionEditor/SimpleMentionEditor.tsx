@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import { EditorState } from 'draft-js';
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createMentionPlugin, {
   defaultSuggestionsFilter,
 } from '@draft-js-plugins/mention';

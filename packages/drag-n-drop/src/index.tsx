@@ -1,4 +1,4 @@
-import { EditorPlugin } from '@draft-js-plugins/editor';
+import { EditorPlugin } from '@vectorworks/draft-js-plugins';
 import handleDrop from './handleDrop';
 import createDecorator from './createDecorator';
 

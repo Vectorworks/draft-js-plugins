@@ -47,7 +47,7 @@ export default class App extends Component {
             <Link href="/plugin/static-toolbar">static toolbar</Link>, you can
             alos use it with other toolbars.
           </p>
-          <Code code="npm install @draft-js-plugins/editor" />
+          <Code code="npm install @vectorworks/draft-js-plugins" />
           <Code code="npm install @draft-js-plugins/text-alignment" />
           <Code code="npm install @draft-js-plugins/static-toolbar" />
           <Code code={gettingStarted} name="gettingStarted.js" />

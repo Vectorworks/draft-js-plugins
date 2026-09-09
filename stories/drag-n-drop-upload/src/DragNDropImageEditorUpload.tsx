@@ -1,6 +1,6 @@
 import React, { useState, useRef, ReactElement } from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 import createBlockDndPlugin from '@draft-js-plugins/drag-n-drop';
 import createImagePlugin from '@draft-js-plugins/image';
 import createFocusPlugin from '@draft-js-plugins/focus';
@@ -22,7 +22,7 @@ const imagePlugin = createImagePlugin({ decorator });
 
 const dndFileUploadPlugin = createDragNDropUploadPlugin({
   handleUpload: customUpload,
-  addImage: imagePlugin.addImage
+  addImage: imagePlugin.addImage,
 });
 
 const plugins = [
@@ -30,7 +30,7 @@ const plugins = [
   focusPlugin,
   imagePlugin,
   resizeablePlugin,
-  dndFileUploadPlugin
+  dndFileUploadPlugin,
 ];
 
 /* eslint-disable */
@@ -47,8 +47,7 @@ const initialState = {
   blocks: [
     {
       key: '9gm3s',
-      text:
-        'You can have images in your text field which are draggable. Hover over the image press down your mouse button and drag it to another position inside the editor.',
+      text: 'You can have images in your text field which are draggable. Hover over the image press down your mouse button and drag it to another position inside the editor.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],
@@ -72,8 +71,7 @@ const initialState = {
     },
     {
       key: 'e23a8',
-      text:
-        'You can checkout the alignment tool plugin documentation to see how to build a compatible block plugin …',
+      text: 'You can checkout the alignment tool plugin documentation to see how to build a compatible block plugin …',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],

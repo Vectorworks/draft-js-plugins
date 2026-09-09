@@ -14,7 +14,7 @@ All necessary environmental info that will help triage this
 Especially include:
 -->
 
-- @draft-js-plugins/editor version:
+- @vectorworks/draft-js-plugins version:
 - plugin name and version:
 
 ## Description

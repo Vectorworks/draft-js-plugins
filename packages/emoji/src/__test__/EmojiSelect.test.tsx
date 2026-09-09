@@ -1,5 +1,6 @@
 import { EditorState } from 'draft-js';
 import React from 'react';
+import '@testing-library/jest-dom';
 import { fireEvent, render, RenderResult } from '@testing-library/react';
 import { EmojiPluginStore } from '../index';
 import EmojiSelect from '../components/EmojiSelect/index';

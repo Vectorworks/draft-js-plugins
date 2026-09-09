@@ -99,5 +99,5 @@ export default ({ store }: { store: AlignmentPluginStore }) =>
     (BlockAlignmentDecorator as any).WrappedComponent =
       WrappedComponent.WrappedComponent || WrappedComponent;
 
-    return BlockAlignmentDecorator;
+    return BlockAlignmentDecorator as unknown as ComponentType<BlockAlignmentDecoratorParams>;
   };

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { css } from 'linaria';
+import { css } from '@linaria/core';
 
 const separator = css`
   display: inline-block;

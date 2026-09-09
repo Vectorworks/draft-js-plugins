@@ -12,7 +12,7 @@
   "dependencies": {
     "animateplus": "1.4.0",
     "clsx": "^2.1.1",
-    "immutable": "^4.0.0-rc.12",
+    "immutable": "^5.1.5",
     "next": "12.3.1",
     "prismjs": "^1.30.0",
     "react-share": "^4.4.1",

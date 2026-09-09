@@ -1,7 +1,7 @@
 import { createStore } from '@draft-js-plugins/utils';
 import { EditorState } from 'draft-js';
 import React, { ReactElement, useEffect } from 'react';
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { StoreItemMap } from '../../../';
 import Toolbar, { ToolbarChildrenProps } from '../index';
 
@@ -33,7 +33,7 @@ describe('Toolbar', () => {
             isCollapsed: () => true,
             getHasFocus: () => true,
           }),
-        } as EditorState),
+        }) as EditorState,
     });
 
     const { container } = render(
@@ -43,11 +43,15 @@ describe('Toolbar', () => {
     );
     expect(container.querySelectorAll('.initial')).toHaveLength(1);
     //activate override
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
     expect(container.querySelectorAll('.initial')).toHaveLength(0);
     expect(container.querySelectorAll('.overridden')).toHaveLength(1);
     //remove override
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
     expect(container.querySelectorAll('.initial')).toHaveLength(1);
     expect(container.querySelectorAll('.overridden')).toHaveLength(0);
   });

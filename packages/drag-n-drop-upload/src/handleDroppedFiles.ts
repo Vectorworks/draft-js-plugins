@@ -1,4 +1,4 @@
-import { PluginFunctions } from '@draft-js-plugins/editor';
+import { PluginFunctions } from '@vectorworks/draft-js-plugins';
 import { DraftHandleValue, EditorState, SelectionState } from 'draft-js';
 import { DndUploadPluginConfig, FileToUpload, PlaceholderBlockType } from '.';
 import { insertPlaceholder } from './components/insertPlaceholder';

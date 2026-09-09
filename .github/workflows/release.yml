@@ -5,6 +5,11 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+
 jobs:
   release:
     name: Release
@@ -17,10 +22,12 @@ jobs:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
 
-      - name: Setup Node.js 16.x
+      - name: Setup Node.js 24.x
         uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 24.x
+          registry-url: https://npm.pkg.github.com
+          scope: '@vectorworks'
 
       - name: Install Dependencies
         run: yarn
@@ -34,4 +41,5 @@ jobs:
           title: 'Upcoming Release Changes'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

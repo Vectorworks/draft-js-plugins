@@ -1,7 +1,7 @@
 const path = require('path');
 
 const packages = [
-  '@draft-js-plugins/editor',
+  ['@vectorworks/draft-js-plugins', 'editor'],
   '@draft-js-plugins/hashtag',
   '@draft-js-plugins/linkify',
   '@draft-js-plugins/anchor',
@@ -27,8 +27,10 @@ const packages = [
 ];
 
 const packagesAliases = {};
-packages.forEach((name) => {
-  const [, folderName] = name.split('/');
+packages.forEach((packageDetails) => {
+  const [name, folderName] = Array.isArray(packageDetails)
+    ? packageDetails
+    : [packageDetails, packageDetails.split('/')[1]];
   packagesAliases[name] = path.join(
     __dirname,
     '../packages',
@@ -62,11 +64,16 @@ module.exports = async ({ config }) => {
       },
 
       {
-        test: /\.(js|jsx|ts|tsx)?$/,
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [{ loader: 'babel-loader' }],
+      },
+      {
+        test: /\.(js|jsx|ts|tsx)$/,
+        include: path.resolve(__dirname, '../packages'),
         use: [
-          { loader: 'babel-loader' },
           {
-            loader: 'linaria/loader',
+            loader: '@wyw-in-js/webpack-loader',
             options: {
               sourceMap: true,
             },

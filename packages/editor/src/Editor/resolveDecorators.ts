@@ -18,7 +18,7 @@ const getDecoratorsFromProps = ({
 }: PluginEditorProps): List<CompositeDecorator | DraftDecorator> =>
   List([{ decorators }, ...plugins])
     .filter((plugin) => plugin?.decorators !== undefined)
-    .flatMap((plugin) => plugin?.decorators) as List<
+    .flatMap((plugin) => plugin!.decorators || []) as List<
     CompositeDecorator | DraftDecorator
   >;
 
@@ -29,14 +29,14 @@ export default function resolveDecorators(
 ): MultiDecorator {
   const decorators = getDecoratorsFromProps(props);
   const compositeDecorator = createCompositeDecorator(
-    decorators.filter((decorator) => !decoratorIsCustom(decorator!)) as List<
-      DraftDecorator
-    >,
+    decorators.filter(
+      (decorator) => !decoratorIsCustom(decorator!)
+    ) as List<DraftDecorator>,
     getEditorState,
     onChange
   );
   const customDecorators = decorators.filter((decorator) =>
     decoratorIsCustom(decorator)
-  ) as List<CompositeDecorator>;
+  ) as unknown as List<CompositeDecorator>;
   return new MultiDecorator(customDecorators.push(compositeDecorator));
 }

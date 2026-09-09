@@ -4,5 +4,4 @@ const packageName = require('./package').name;
 module.exports = {
   ...base,
   displayName: packageName,
-  name: packageName,
 };

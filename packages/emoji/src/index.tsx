@@ -11,8 +11,8 @@ import {
   EditorPlugin,
   AriaProps,
   EditorCommand,
-} from '@draft-js-plugins/editor';
-import { Map, List } from 'immutable';
+} from '@vectorworks/draft-js-plugins';
+import { is, Map, List } from 'immutable';
 import flatten from 'lodash/flatten';
 import values from 'lodash/values';
 import { DraftHandleValue, EditorState } from 'draft-js';
@@ -267,9 +267,7 @@ export default (config: EmojiPluginConfig = {}): EmojiPlugin => {
     onChange: (editorState) => {
       let newEditorState = attachImmutableEntitiesToEmojis(editorState);
       if (
-        !newEditorState
-          .getCurrentContent()
-          .equals(editorState.getCurrentContent())
+        !is(newEditorState.getCurrentContent(), editorState.getCurrentContent())
       ) {
         const selection = editorState.getSelection();
         // Forcing the current selection ensures that it will be at it's right place.

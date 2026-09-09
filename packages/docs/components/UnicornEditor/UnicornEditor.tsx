@@ -1,6 +1,6 @@
 import createAlignmentPlugin from '@draft-js-plugins/alignment';
 import createBlockDndPlugin from '@draft-js-plugins/drag-n-drop';
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 import createEmojiPlugin from '@draft-js-plugins/emoji';
 import createFocusPlugin from '@draft-js-plugins/focus';
 import createHashtagPlugin from '@draft-js-plugins/hashtag';

@@ -1,5 +1,5 @@
 import { DraftJsButtonTheme } from '@draft-js-plugins/buttons';
-import { css } from 'linaria';
+import { css } from '@linaria/core';
 
 export interface AlignmentPluginTheme {
   buttonStyles: DraftJsButtonTheme;

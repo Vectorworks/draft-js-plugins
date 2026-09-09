@@ -14,7 +14,7 @@ export default function removeBlock(
   // Note: if the focused block is the first block then it is reduced to an
   // unstyled block with no character
   if (beforeBlock === undefined) {
-    const targetRange = new SelectionState({
+    const targetRange = new SelectionState().merge({
       anchorKey: blockKey,
       anchorOffset: 0,
       focusKey: blockKey,
@@ -26,7 +26,7 @@ export default function removeBlock(
     const newState = EditorState.push(editorState, content, 'remove-range');
 
     // force to new selection
-    const newSelection = new SelectionState({
+    const newSelection = new SelectionState().merge({
       anchorKey: blockKey,
       anchorOffset: 0,
       focusKey: blockKey,
@@ -35,7 +35,7 @@ export default function removeBlock(
     return EditorState.forceSelection(newState, newSelection);
   }
 
-  const targetRange = new SelectionState({
+  const targetRange = new SelectionState().merge({
     anchorKey: beforeKey,
     anchorOffset: beforeBlock.getLength(),
     focusKey: blockKey,
@@ -46,7 +46,7 @@ export default function removeBlock(
   const newState = EditorState.push(editorState, content, 'remove-range');
 
   // force to new selection
-  const newSelection = new SelectionState({
+  const newSelection = new SelectionState().merge({
     anchorKey: beforeKey,
     anchorOffset: beforeBlock.getLength(),
     focusKey: beforeKey,

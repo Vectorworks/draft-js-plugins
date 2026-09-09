@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { List, merge } from 'immutable';
 import {
   ContentBlock,
   EditorState,
@@ -20,7 +20,7 @@ const insertBlockAfterSelection = (
     if (blockKey !== targetKey) return;
     array.push(newBlock);
   });
-  return contentState.merge({
+  return merge(contentState, {
     blockMap: BlockMapBuilder.createFromArray(array),
     selectionBefore: selectionState,
     selectionAfter: selectionState.merge({
@@ -30,12 +30,13 @@ const insertBlockAfterSelection = (
       focusOffset: newBlock.getLength(),
       isBackward: false,
     }),
-  }) as ContentState;
+  });
 };
 
 export default function insertNewLine(editorState: EditorState): EditorState {
   const contentState = editorState.getCurrentContent();
   const selectionState = editorState.getSelection();
+  // @ts-expect-error @types/draft-js does not model ContentBlock's Record initializer with Immutable v5.
   const newLineBlock = new ContentBlock({
     key: generateRandomKey(),
     type: 'unstyled',
@@ -47,8 +48,8 @@ export default function insertNewLine(editorState: EditorState): EditorState {
     selectionState,
     newLineBlock
   );
-  const newContent = withNewLine.merge({
-    selectionAfter: withNewLine.getSelectionAfter().set('hasFocus', true),
+  const newContent = merge(withNewLine, {
+    selectionAfter: withNewLine.getSelectionAfter().merge({ hasFocus: true }),
   }) as ContentState;
   return EditorState.push(editorState, newContent, 'insert-fragment');
 }

@@ -1,6 +1,6 @@
 import React, { ReactElement, useRef, useState } from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createImagePlugin from '@draft-js-plugins/image';
 import editorStyles from './editorStyles.css';
 
@@ -21,8 +21,7 @@ const initialState = {
   blocks: [
     {
       key: '9gm3s',
-      text:
-        'You can have images in your text field. This is a very rudimentary example, but you can enhance the image plugin with resizing, focus or alignment plugins.',
+      text: 'You can have images in your text field. This is a very rudimentary example, but you can enhance the image plugin with resizing, focus or alignment plugins.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],

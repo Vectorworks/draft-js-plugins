@@ -298,5 +298,5 @@ export default ({ config, store }: DecoratorProps) =>
     (BlockResizeableDecorator as any).WrappedComponent =
       WrappedComponent.WrappedComponent || WrappedComponent;
 
-    return BlockResizeableDecorator;
+    return BlockResizeableDecorator as unknown as ComponentType<WrappedComponentProps>;
   };

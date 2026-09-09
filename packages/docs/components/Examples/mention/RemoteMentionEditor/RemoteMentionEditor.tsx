@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { EditorState } from 'draft-js';
 
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 
 import createMentionPlugin from '@draft-js-plugins/mention';
 import editorStyles from './RemoteMentionEditor.module.css';

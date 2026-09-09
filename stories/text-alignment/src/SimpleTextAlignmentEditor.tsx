@@ -1,5 +1,7 @@
 import React, { ReactElement, useRef, useState } from 'react';
-import Editor, { createEditorStateWithText } from '@draft-js-plugins/editor';
+import Editor, {
+  createEditorStateWithText,
+} from '@vectorworks/draft-js-plugins';
 import createToolbarPlugin from '@draft-js-plugins/static-toolbar';
 import createTextAlignmentPlugin from '@draft-js-plugins/text-alignment';
 import {

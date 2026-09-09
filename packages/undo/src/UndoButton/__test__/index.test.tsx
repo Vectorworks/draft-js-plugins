@@ -1,5 +1,6 @@
 /* eslint no-unused-expressions: 0, react/no-children-prop:0 */
 import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import userEvents from '@testing-library/user-event';
 import { EditorState, Modifier } from 'draft-js';
 import React from 'react';

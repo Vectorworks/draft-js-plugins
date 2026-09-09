@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import React, { ReactElement, ReactNode } from 'react';
 import {
   MentionSuggestions,
@@ -73,9 +74,9 @@ describe('MentionSuggestions Component', () => {
     render(<MentionSuggestions {...props} ref={instanceRef} />);
 
     instanceRef.current!.openDropdown();
-    expect(props.onOpenChange).lastCalledWith(true);
+    expect(props.onOpenChange).toHaveBeenLastCalledWith(true);
     instanceRef.current!.closeDropdown();
-    expect(props.onOpenChange).lastCalledWith(false);
+    expect(props.onOpenChange).toHaveBeenLastCalledWith(false);
   });
 
   it('The popoverComponent prop changes the popover component', () => {

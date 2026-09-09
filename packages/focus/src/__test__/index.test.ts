@@ -1,4 +1,4 @@
-import { PluginFunctions } from '@draft-js-plugins/editor';
+import { PluginFunctions } from '@vectorworks/draft-js-plugins';
 import {
   ContentBlock,
   ContentState,
@@ -11,7 +11,7 @@ const mockCreateBlockKeyStore = jest.requireActual(
   '../utils/createBlockKeyStore'
 );
 
-jest.mock('linaria');
+jest.mock('@linaria/core');
 
 let mockBlockKeyStore = {
   add: jest.fn(),
@@ -36,11 +36,13 @@ describe('FocusPlugin', () => {
   });
 
   const createEditorStateFromBlocks = (): EditorState => {
+    // @ts-expect-error @types/draft-js does not model ContentBlock's Record initializer with Immutable v5.
     const block1 = new ContentBlock({
       key: 'non-selected-block',
       text: ' ',
       type: 'atomic',
     });
+    // @ts-expect-error @types/draft-js does not model ContentBlock's Record initializer with Immutable v5.
     const block2 = new ContentBlock({
       key: 'selected-block',
       text: ' ',

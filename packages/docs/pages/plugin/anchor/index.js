@@ -43,7 +43,7 @@ export default class App extends Component {
             <Link href="/plugin/inline-toolbar">inline toolbar</Link>. It also
             provides a decorator that formats the created entities.
           </p>
-          <Code code="npm install @draft-js-plugins/editor" />
+          <Code code="npm install @vectorworks/draft-js-plugins" />
           <Code code="npm install @draft-js-plugins/anchor" />
           <Code code="npm install @draft-js-plugins/inline-toolbar" />
           <Code code={gettingStarted} name="gettingStarted.js" />

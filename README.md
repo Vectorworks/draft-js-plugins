@@ -60,19 +60,31 @@ Checkout [the website](https://www.draft-js-plugins.com/)!
 
 First, install the editor with `npm`:
 
+```sh
+npm config set @vectorworks:registry=https://npm.pkg.github.com/Vectorworks
+npm login --scope=@vectorworks --auth-type=legacy --registry=https://npm.pkg.github.com
 ```
-$ npm install @draft-js-plugins/editor --save
+
+Use a personal access token with the `read:packages` scope when the package is
+private.
+
 ```
+$ npm install @vectorworks/draft-js-plugins --save
+```
+
+The package uses Immutable.js 5. Draft.js retains its own compatible
+Immutable.js 3 transitive dependency, so no application-level override is
+needed.
 
 Then import the editor somewhere in your code and you're ready to go!
 
 ```js
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 ```
 
 ## Documentation
 
-### @draft-js-plugins/editor
+### @vectorworks/draft-js-plugins
 
 #### Editor
 
@@ -92,7 +104,7 @@ Usage:
 
 ```js
 import React, { Component } from 'react';
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createHashtagPlugin from '@draft-js-plugins/hashtag';
 import createLinkifyPlugin from '@draft-js-plugins/linkify';
 import { EditorState } from 'draft-js';

@@ -1,4 +1,4 @@
-import { css } from 'linaria';
+import { css } from '@linaria/core';
 
 const entryShared = `
   padding: 7px 10px 3px 10px;

@@ -26,7 +26,7 @@ export default (
   setEditorState(
     EditorState.forceSelection(
       editorState,
-      new SelectionState({
+      new SelectionState().merge({
         anchorKey: newActiveBlock.getKey(),
         anchorOffset: 0,
         focusKey: newActiveBlock.getKey(),

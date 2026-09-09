@@ -38,7 +38,7 @@ export default class App extends Component {
         </Container>
         <AlternateContainer>
           <Heading level={2}>Getting Started</Heading>
-          <Code code="npm install @draft-js-plugins/editor" />
+          <Code code="npm install @vectorworks/draft-js-plugins" />
           <Code code="npm install @draft-js-plugins/video --save" />
           <Code code={gettingStarted} name="gettingStarted.js" />
         </AlternateContainer>

@@ -1,4 +1,4 @@
-import { EditorPlugin } from '@draft-js-plugins/editor';
+import { EditorPlugin } from '@vectorworks/draft-js-plugins';
 import { ContentBlock } from 'draft-js';
 import React, { ComponentType, ReactElement } from 'react';
 import TextAlignmentComponent, {

@@ -81,7 +81,7 @@ export default function Mention(): ReactElement {
       </Container>
       <AlternateContainer>
         <Heading level={2}>Getting Started</Heading>
-        <Code code="npm install @draft-js-plugins/editor" />
+        <Code code="npm install @vectorworks/draft-js-plugins" />
         <Code code="npm install @draft-js-plugins/mention" />
         <Code code="Please checkout the 'Simple Example' further down the page." />
         <Heading level={3}>Importing the default styles</Heading>

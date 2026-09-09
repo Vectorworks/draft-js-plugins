@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { EditorState, convertFromRaw } from 'draft-js';
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 
 import createAlignmentPlugin from '@draft-js-plugins/alignment';
 
@@ -38,8 +38,7 @@ const initialState = {
   blocks: [
     {
       key: '9gm3s',
-      text:
-        'You can have video in your text field. This is a very rudimentary example, but you can enhance the video plugin with resizing, focus or alignment plugins.',
+      text: 'You can have video in your text field. This is a very rudimentary example, but you can enhance the video plugin with resizing, focus or alignment plugins.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],

@@ -1,4 +1,4 @@
-import { EditorPlugin } from '@draft-js-plugins/editor';
+import { EditorPlugin } from '@vectorworks/draft-js-plugins';
 import { EditorState } from 'draft-js';
 import UploadPlaceholder from './components/UploadPlaceholder';
 import handleDroppedFiles, { FileData } from './handleDroppedFiles';

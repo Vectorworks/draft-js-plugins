@@ -47,7 +47,7 @@ export default (
     );
 
     // force to new selection
-    const newSelection = new SelectionState({
+    const newSelection = new SelectionState().merge({
       anchorKey: blockKey,
       anchorOffset: 0,
       focusKey: blockKey,

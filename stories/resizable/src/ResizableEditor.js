@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
 
-import Editor, { composeDecorators } from '@draft-js-plugins/editor';
+import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 
 import createResizeablePlugin from '@draft-js-plugins/resizeable';
 
@@ -32,8 +32,7 @@ const initialState = {
   blocks: [
     {
       key: '9gm3s',
-      text:
-        'This is a simple example. Hover the block and change the with by dragging the mouse.',
+      text: 'This is a simple example. Hover the block and change the with by dragging the mouse.',
       type: 'unstyled',
       depth: 0,
       inlineStyleRanges: [],

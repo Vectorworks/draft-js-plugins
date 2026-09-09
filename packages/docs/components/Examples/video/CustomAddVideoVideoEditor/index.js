@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { EditorState } from 'draft-js';
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createVideoPlugin from '@draft-js-plugins/video';
 import VideoAdd from './VideoAdd';
 import editorStyles from './editorStyles.module.css';

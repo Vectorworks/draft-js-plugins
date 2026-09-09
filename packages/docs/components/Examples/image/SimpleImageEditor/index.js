@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { convertFromRaw, EditorState } from 'draft-js';
 
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 
 import createImagePlugin from '@draft-js-plugins/image';
 import editorStyles from './editorStyles.module.css';

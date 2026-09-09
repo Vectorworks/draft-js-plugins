@@ -1,6 +1,6 @@
 import React, { ReactElement, useRef, useState } from 'react';
 import { EditorState } from 'draft-js';
-import Editor from '@draft-js-plugins/editor';
+import Editor from '@vectorworks/draft-js-plugins';
 import createLinkifyPlugin from '@draft-js-plugins/linkify';
 import editorStyles from './editorStyles.css';
 
@@ -32,7 +32,7 @@ const CustomMentionEditor = (): ReactElement => {
         editorState={editorState}
         onChange={onChange}
         plugins={plugins}
-        ref={element => {
+        ref={(element) => {
           editor.current = element;
         }}
       />

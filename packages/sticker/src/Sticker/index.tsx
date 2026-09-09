@@ -38,15 +38,16 @@ export default class Sticker extends Component<StickerProps> {
     );
 
     const data = contentState.getEntity(block.getEntityAt(0)).getData();
+    const imageUrl = stickers.get('data')?.get(data.id)?.get('url');
     return (
       <figure
         contentEditable={false}
-        data-offset-key={`${block.get('key')}-0-0`}
+        data-offset-key={`${block.getKey()}-0-0`}
         className={theme.sticker}
       >
         <img
           className={theme.stickerImage}
-          src={stickers.getIn(['data', data.id, 'url'])}
+          src={imageUrl}
           role="presentation"
         />
         {this.props.attachRemoveButton ? removeButton : null}

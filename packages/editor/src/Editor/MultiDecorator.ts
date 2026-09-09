@@ -1,15 +1,15 @@
 import { CompositeDecorator, ContentBlock, ContentState } from 'draft-js';
-import Immutable from 'immutable';
+import { List } from 'immutable';
 
 const KEY_SEPARATOR = '-';
 
 export default class MultiDecorator {
-  decorators: Immutable.List<CompositeDecorator>;
+  decorators: List<CompositeDecorator>;
 
   constructor(
-    decorators: Immutable.List<CompositeDecorator> | CompositeDecorator[]
+    decorators: List<CompositeDecorator> | CompositeDecorator[]
   ) {
-    this.decorators = Immutable.List(decorators);
+    this.decorators = List(decorators);
   }
 
   /**
@@ -18,7 +18,7 @@ export default class MultiDecorator {
   getDecorations(
     block: ContentBlock,
     contentState: ContentState
-  ): Immutable.List<string> {
+  ): List<string> {
     const decorations: string[] = new Array(block.getText().length).fill(null);
 
     this.decorators.forEach((decorator, i) => {
@@ -33,7 +33,7 @@ export default class MultiDecorator {
       });
     });
 
-    return Immutable.List(decorations);
+    return List(decorations);
   }
 
   /**
@@ -61,7 +61,7 @@ export default class MultiDecorator {
     const parts = key.split(KEY_SEPARATOR);
     const index = Number(parts[0]);
 
-    return this.decorators.get(index);
+    return this.decorators.get(index)!;
   }
 
   /**

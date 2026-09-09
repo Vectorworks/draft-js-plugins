@@ -1,9 +1,10 @@
 import { EditorState } from 'draft-js';
+import { Collection } from 'immutable';
 import getBlockMapKeys from './getBlockMapKeys';
 
 export default (
   editorState: EditorState
-): Immutable.Iterable<number, string> => {
+): Collection.Indexed<string> => {
   const selectionState = editorState.getSelection();
   const contentState = editorState.getCurrentContent();
   return getBlockMapKeys(

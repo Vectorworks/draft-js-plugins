@@ -1,7 +1,9 @@
 import path from 'path';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-import { existsSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
+import wyw from '@wyw-in-js/rollup';
+import css from 'rollup-plugin-css-only';
 
 const input = existsSync('./src/index.ts')
   ? './src/index.ts'
@@ -13,6 +15,13 @@ const babelOptions = {
   extensions,
   babelHelpers: 'bundled',
 };
+const cssOptions = {
+  output: (styles) => {
+    mkdirSync('./lib', { recursive: true });
+    writeFileSync('./lib/plugin.css', styles);
+  },
+};
+const wywOptions = { sourceMap: false };
 
 export default [
   {
@@ -23,7 +32,12 @@ export default [
       exports: 'named',
     },
     external,
-    plugins: [nodeResolve({ extensions }), babel(babelOptions)],
+    plugins: [
+      wyw(wywOptions),
+      nodeResolve({ extensions }),
+      babel(babelOptions),
+      css(cssOptions),
+    ],
   },
   {
     input,
@@ -33,6 +47,7 @@ export default [
     },
     external,
     plugins: [
+      wyw(wywOptions),
       nodeResolve({ extensions }),
       babel({
         ...babelOptions,
@@ -50,6 +65,7 @@ export default [
           ],
         ],
       }),
+      css(cssOptions),
     ],
   },
 ];
