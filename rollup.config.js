@@ -1,7 +1,7 @@
 import path from 'path';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
-import { existsSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import wyw from '@wyw-in-js/rollup';
 import css from 'rollup-plugin-css-only';
 
@@ -16,7 +16,10 @@ const babelOptions = {
   babelHelpers: 'bundled',
 };
 const cssOptions = {
-  output: (styles) => writeFileSync('./lib/plugin.css', styles),
+  output: (styles) => {
+    mkdirSync('./lib', { recursive: true });
+    writeFileSync('./lib/plugin.css', styles);
+  },
 };
 const wywOptions = { sourceMap: false };
 
