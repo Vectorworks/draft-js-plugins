@@ -57,6 +57,7 @@
     "css-loader": "6.8.1",
     "fast-glob": "^3.3.3",
     "husky": "^8.0.3",
+    "immutable": "^5.1.5",
     "jest": "30.5.1",
     "jest-environment-jsdom": "30.5.1",
     "lint-staged": "^13.2.2",
