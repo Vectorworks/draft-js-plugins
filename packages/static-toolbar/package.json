@@ -1,7 +1,9 @@
 {
   "name": "@draft-js-plugins/static-toolbar",
-  "version": "4.1.4",
-  "sideEffects": ["*.css"],
+  "version": "4.1.5",
+  "sideEffects": [
+    "*.css"
+  ],
   "description": "Static Toolbar Plugin for DraftJS",
   "author": {
     "name": "Julian Krispel",
@@ -14,7 +16,9 @@
   "main": "lib/index.cjs.js",
   "types": "lib/index.d.ts",
   "module": "lib/index.esm.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "editor",
     "wysiwyg",
@@ -40,7 +44,7 @@
     "prop-types": "^15.8.1"
   },
   "peerDependencies": {
-    "@vectorworks/draft-js-plugins": "^4.1.4",
+    "@vectorworks/draft-js-plugins": "^4.1.5",
     "draft-js": "^0.10.1 || ^0.11.0",
     "react": "^16.8.0 || ^17.0.0 || >=18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || >=18.0.0"
