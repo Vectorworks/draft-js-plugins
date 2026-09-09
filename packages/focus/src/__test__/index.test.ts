@@ -11,7 +11,7 @@ const mockCreateBlockKeyStore = jest.requireActual(
   '../utils/createBlockKeyStore'
 );
 
-jest.mock('linaria');
+jest.mock('@linaria/core');
 
 let mockBlockKeyStore = {
   add: jest.fn(),

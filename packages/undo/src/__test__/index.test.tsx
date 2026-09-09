@@ -1,10 +1,11 @@
 import React from 'react';
+import '@testing-library/jest-dom';
 import { EditorState } from 'draft-js';
 import { render, screen } from '@testing-library/react';
 import { PluginFunctions } from '@vectorworks/draft-js-plugins';
 import createUndoPlugin from '../index';
 
-jest.mock('linaria');
+jest.mock('@linaria/core');
 
 describe('UndoPlugin Config', () => {
   const onChange = (): void => undefined;

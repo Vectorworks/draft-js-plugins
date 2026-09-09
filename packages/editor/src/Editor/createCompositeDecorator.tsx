@@ -11,9 +11,12 @@ export default function createCompositeDecorator(
   getEditorState: () => EditorState,
   setEditorState: (state: EditorState) => void
 ): CompositeDecorator {
-  const convertedDecorators = decorators
-    .map((decorator) => {
-      const Component = decorator!.component;
+  const convertedDecorators: DraftDecorator[] = decorators
+    .toArray()
+    .map((decorator): DraftDecorator => {
+      const Component = decorator.component as React.ComponentType<
+        Record<string, unknown>
+      >;
       const DecoratedComponent = (
         props: Record<string, unknown>
       ): ReactElement => (
@@ -24,11 +27,11 @@ export default function createCompositeDecorator(
         />
       );
       return {
-        ...decorator,
+        strategy: decorator.strategy,
         component: DecoratedComponent,
+        props: decorator.props,
       };
-    })
-    .toArray();
+    });
 
   return new CompositeDecorator(convertedDecorators);
 }

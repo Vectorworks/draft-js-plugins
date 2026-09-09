@@ -1,25 +1,10 @@
-const removeLinariaImport = () => ({
-  name: 'remove-linaria-import',
-  visitor: {
-    ImportDeclaration(path) {
-      if (path.node.source && path.node.source.value === 'linaria') {
-        path.remove();
-      }
-    },
-  },
-});
-
 module.exports = {
   presets: [
     //using loose true because of this issue: https://github.com/storybookjs/storybook/issues/12093
     ['@babel/preset-env', { loose: true }],
-    '@babel/react',
-    '@babel/flow',
-    '@babel/typescript',
-    'linaria/babel',
+    '@babel/preset-react',
+    '@babel/preset-flow',
+    '@babel/preset-typescript',
   ],
-  plugins: [
-    ['@babel/plugin-proposal-class-properties', { loose: true }],
-    removeLinariaImport,
-  ],
+  plugins: [['@babel/plugin-transform-class-properties', { loose: true }]],
 };

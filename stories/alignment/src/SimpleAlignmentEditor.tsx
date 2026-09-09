@@ -5,7 +5,7 @@ import {
   EditorState,
   RawDraftContentState,
 } from 'draft-js';
-import Immutable from 'immutable';
+import { Map } from 'immutable';
 import Editor, { composeDecorators } from '@vectorworks/draft-js-plugins';
 import createAlignmentPlugin from '@draft-js-plugins/alignment';
 import createFocusPlugin from '@draft-js-plugins/focus';
@@ -75,7 +75,7 @@ function BlockWrapper({ children }: { children?: ReactNode }): ReactElement {
   return <div className={editorStyles.wrapper}>{children}</div>;
 }
 
-const blockRenderMap = Immutable.Map({
+const blockRenderMap = Map({
   atomic: {
     element: 'figure',
     wrapper: <BlockWrapper />,

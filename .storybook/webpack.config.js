@@ -64,11 +64,16 @@ module.exports = async ({ config }) => {
       },
 
       {
-        test: /\.(js|jsx|ts|tsx)?$/,
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [{ loader: 'babel-loader' }],
+      },
+      {
+        test: /\.(js|jsx|ts|tsx)$/,
+        include: path.resolve(__dirname, '../packages'),
         use: [
-          { loader: 'babel-loader' },
           {
-            loader: 'linaria/loader',
+            loader: '@wyw-in-js/webpack-loader',
             options: {
               sourceMap: true,
             },

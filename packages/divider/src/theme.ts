@@ -1,10 +1,10 @@
-import { css } from 'linaria';
+import { css } from '@linaria/core';
 
 export interface DividerPluginTheme {
   divider?: string;
 }
 
-export const defaultTheme = {
+export const defaultTheme: { divider: string } = {
   divider: css`
     display: flex;
     align-items: center;

@@ -36,11 +36,14 @@ const getDisplayName = (WrappedComponent: WrappedComponentType): string => {
   return component.displayName || component.name || 'Component';
 };
 
-export default ({ theme, blockKeyStore }: DecoratorProps) => (
-  WrappedComponent: WrappedComponentType
-): ComponentType<BlockFocusDecoratorProps> => {
-  const BlockFocusDecorator = React.forwardRef(
-    (props: BlockFocusDecoratorProps, ref): ReactElement => {
+export default ({ theme, blockKeyStore }: DecoratorProps) =>
+  (
+    WrappedComponent: WrappedComponentType
+  ): ComponentType<BlockFocusDecoratorProps> => {
+    const BlockFocusDecorator = React.forwardRef<
+      unknown,
+      Omit<BlockFocusDecoratorProps, 'ref'>
+    >((props, ref): ReactElement => {
       useEffect(() => {
         blockKeyStore.add(props.block.getKey());
         return () => {
@@ -68,16 +71,15 @@ export default ({ theme, blockKeyStore }: DecoratorProps) => (
           className={combinedClassName}
         />
       );
-    }
-  );
+    });
 
-  BlockFocusDecorator.displayName = `BlockFocus(${getDisplayName(
-    WrappedComponent
-  )})`;
+    BlockFocusDecorator.displayName = `BlockFocus(${getDisplayName(
+      WrappedComponent
+    )})`;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (BlockFocusDecorator as any).WrappedComponent =
-    WrappedComponent.WrappedComponent || WrappedComponent;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (BlockFocusDecorator as any).WrappedComponent =
+      WrappedComponent.WrappedComponent || WrappedComponent;
 
-  return BlockFocusDecorator;
-};
+    return BlockFocusDecorator as unknown as ComponentType<BlockFocusDecoratorProps>;
+  };
