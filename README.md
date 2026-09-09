@@ -61,7 +61,7 @@ Checkout [the website](https://www.draft-js-plugins.com/)!
 First, install the editor with `npm`:
 
 ```sh
-npm config set @vectorworks:registry=https://npm.pkg.github.com
+npm config set @vectorworks:registry=https://npm.pkg.github.com/Vectorworks
 npm login --scope=@vectorworks --auth-type=legacy --registry=https://npm.pkg.github.com
 ```
 
@@ -72,17 +72,9 @@ private.
 $ npm install @vectorworks/draft-js-plugins --save
 ```
 
-Draft.js declares its legacy Immutable.js 3 dependency transitively. Add the
-following npm override to your application's `package.json` so it also resolves
-to Immutable.js 5:
-
-```json
-{
-  "overrides": {
-    "immutable": "^5.1.5"
-  }
-}
-```
+The package uses Immutable.js 5. Draft.js retains its own compatible
+Immutable.js 3 transitive dependency, so no application-level override is
+needed.
 
 Then import the editor somewhere in your code and you're ready to go!
 
