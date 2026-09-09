@@ -1,5 +1,11 @@
 # Change Log
 
+## 4.1.5
+
+### Patch Changes
+
+- e46c0cb: Upgrade Immutable.js to version 5.1.5 or later.
+
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 

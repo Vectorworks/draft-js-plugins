@@ -1,7 +1,9 @@
 {
   "name": "@draft-js-plugins/undo",
-  "version": "4.1.3",
-  "sideEffects": ["*.css"],
+  "version": "4.1.4",
+  "sideEffects": [
+    "*.css"
+  ],
   "description": "Undo Plugin for DraftJS",
   "author": {
     "name": "Nik Graf",
@@ -15,7 +17,9 @@
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "./lib/index.d.ts",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "editor",
     "wysiwyg",
@@ -40,7 +44,7 @@
     "prop-types": "^15.8.1"
   },
   "peerDependencies": {
-    "@vectorworks/draft-js-plugins": "^4.1.4",
+    "@vectorworks/draft-js-plugins": "^4.1.5",
     "draft-js": "^0.10.1 || ^0.11.0",
     "react": "^16.8.0 || ^17.0.0 || >=18.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || >=18.0.0"

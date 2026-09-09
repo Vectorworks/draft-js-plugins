@@ -1,5 +1,13 @@
 # Change Log
 
+## 5.3.1
+
+### Patch Changes
+
+- e46c0cb: Use `@vectorworks/draft-js-plugins` for editor types and add it as a peer dependency.
+- Updated dependencies [e46c0cb]
+  - @vectorworks/draft-js-plugins@4.1.5
+
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
